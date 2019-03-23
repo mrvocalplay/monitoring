@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os"
 	"os/exec"
+	"strconv"
 	"strings"
 )
 
@@ -27,4 +28,16 @@ func CutStr(str string, cut1 string, cut2 string) string {
 	str = strings.Replace(str, cut2, "", -1)
 	str = strings.TrimRight(str, "\r\n")
 	return str
+}
+
+func ToInt(s string) float64 {
+	str := s
+
+	// String to Int conversation => strconv.Atoi function return integer with error if any.
+	// Atoi means "A" String to "i" integer
+	intI, err := strconv.ParseFloat(str, 64)
+	if err != nil {
+		fmt.Println(err)
+	}
+	return intI
 }

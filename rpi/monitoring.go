@@ -3,7 +3,7 @@ package rpi
 import (
 	"runtime"
 
-	"github.com/mrvocalplay/monitoring"
+	mon "github.com/mrvocalplay/monitoring"
 )
 
 // GetOs gives you your OS and Arcitecture
@@ -16,14 +16,14 @@ func GetOs() string {
 
 // GetCPUTemp returns the CPU and GPU Temperature from the RPI
 func GetCPUTemp() string {
-	return monitoring.RunCmd("vcgencmd measure_temp")
+	return mon.RunCmd("vcgencmd measure_temp")
 }
 
 // GetCPUSpannung jjj
-func GetCPUSpannung() string {
-	return monitoring.CutStr(runCmd("vcgencmd measure_volts"), "volt=", "V")
+func GetCPUVolts() string {
+	return mon.RunCmd("vcgencmd measure_volts")
 }
 
 func GetArmClock() string {
-	return monitoring.CutStr(runCmd("vcgencmd measure_clock arm"), "frequency(45)=", "")
+	return mon.RunCmd("vcgencmd measure_clock arm")
 }
